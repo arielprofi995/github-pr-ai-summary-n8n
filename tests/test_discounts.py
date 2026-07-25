@@ -43,3 +43,14 @@ def test_rejects_negative_price() -> None:
             Decimal("-10.00"),
             Decimal("10"),
         )
+
+
+def test_rejects_negative_discount() -> None:
+    with pytest.raises(
+        ValueError,
+        match="Discount percent must be between 0 and 100",
+    ):
+        apply_discount(
+            Decimal("100.00"),
+            Decimal("-1"),
+        )
