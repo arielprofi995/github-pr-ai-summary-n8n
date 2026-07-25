@@ -54,3 +54,12 @@ def test_rejects_negative_discount() -> None:
             Decimal("100.00"),
             Decimal("-1"),
         )
+
+
+def test_full_discount() -> None:
+    result = apply_discount(
+        Decimal("100.00"),
+        Decimal("100"),
+    )
+
+    assert result == Decimal("0.00")
